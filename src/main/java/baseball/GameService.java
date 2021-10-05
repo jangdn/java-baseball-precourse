@@ -33,6 +33,7 @@ public class GameService {
         System.out.print("게임 끝");
     }
 
+
     private void printGameResult(List<GameResult> gameResults) {
         int strikeCount = countResult(gameResults, GameResult.STRIKE);
         int ballCount = countResult(gameResults, GameResult.BALL);
@@ -55,6 +56,7 @@ public class GameService {
     private int countResult(List<GameResult> gameResults, GameResult countType) {
         int count = 0;
         for (GameResult gameResult : gameResults) {
+            // TODO 2depth
             if(gameResult.equals(countType))
                 count++;
         }
@@ -63,15 +65,12 @@ public class GameService {
 
     private List<Integer> askAnswers() {
         System.out.println("숫자를 입력해주세요 : ");
-        String askAnswersStr = Console.readLine();
+        String guessesStr = AskUtil.askAnswers();
 
-        // TODO validation 추가
+        String[] inputGuesses = guessesStr.split("");
 
-        String[] inputAnswersArray = askAnswersStr.split("");
-        return StringUtil.toIntegers(Arrays.asList(inputAnswersArray));
-    }
+        List<String> guesses = Arrays.asList(inputGuesses);
 
-    private Game createAnswerNumbers() {
-        return null;
+        return StringUtil.toIntegers(guesses);
     }
 }
