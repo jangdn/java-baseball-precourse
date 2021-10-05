@@ -4,12 +4,12 @@ import nextstep.utils.Console;
 
 public class GameServiceUtil {
 
-    private final static String RESTART_SIGNAL = "OK";
-    private final static String END_SIGNAL = "END";
+    private final static String RESTART_SIGNAL = "1";
+    private final static String END_SIGNAL = "2";
 
     public static boolean askRestart() {
 
-        System.out.print("게임을 계속 하시겠습니까? ( "+ RESTART_SIGNAL + "/" + END_SIGNAL +" )");
+        System.out.print("게임을 새로 시작하려면 "+RESTART_SIGNAL+", 종료하려면 "+ END_SIGNAL +"를 입력하세요.");
 
         String input = Console.readLine();
 
