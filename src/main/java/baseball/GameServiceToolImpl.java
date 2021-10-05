@@ -31,26 +31,19 @@ public class GameServiceToolImpl implements GameServiceTool {
     public List<Integer> askAnswers() {
         GameMessage.ENTER_GUESS_ANSWER.print();
 
-        String guessStr = "";
-        boolean inCorrectInput = true;
-        while(inCorrectInput) {
-            guessStr = Console.readLine();
-            inCorrectInput = !validateInput(guessStr);
-            printInCorrectInput(inCorrectInput);
-        }
+        ConsoleInput consoleInput = null;
+        do {
+            consoleInput = new ConsoleInput(Console.readLine(), false);
+            consoleInput.validate(GameServiceToolImpl::validateAnswers);
+            consoleInput.inValidationMessage(GameMessage.INVALID_INPUT_STRING);
+        } while(!consoleInput.isValid());
 
-        String[] inputGuesses = guessStr.split("");
+        String[] inputGuessesSplit = consoleInput.getInput().split("");
 
-        return StringUtil.toIntegers(Arrays.asList(inputGuesses));
+        return StringUtil.toIntegers(Arrays.asList(inputGuessesSplit));
     }
 
-    private static void printInCorrectInput(boolean inCorrectInput) {
-        if(inCorrectInput) {
-            GameMessage.INVALID_INPUT_STRING.print();
-        }
-    }
-
-    private static boolean validateInput(String inputGuess) {
+    private static boolean validateAnswers(String inputGuess) {
         if(StringUtil.isEmpty(inputGuess))
             return false;
 
