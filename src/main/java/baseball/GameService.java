@@ -65,7 +65,7 @@ public class GameService {
 
     private List<Integer> askAnswers() {
         System.out.println("숫자를 입력해주세요 : ");
-        String guessesStr = AskUtil.askAnswers();
+        String guessesStr = GameServiceUtil.askAnswers();
 
         String[] inputGuesses = guessesStr.split("");
 
