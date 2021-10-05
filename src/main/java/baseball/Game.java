@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Game {
 
-    private static final int GAME_ANSWER_SIZE = 3;
+    public static final int GAME_ANSWER_SIZE = 3;
 
     private Answers answers;
 

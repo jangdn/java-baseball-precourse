@@ -1,5 +1,8 @@
 package baseball;
 
+import nextstep.utils.Console;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
@@ -30,7 +33,17 @@ public class GameService {
     }
 
     private List<Integer> askAnswers() {
-        return null;
+        System.out.println("숫자를 입력해주세요 : ");
+        String askAnswersStr = Console.readLine();
+
+        // TODO validation 추가
+        String[] inputAnswersArray = askAnswersStr.split("");
+        ArrayList<Integer> inputAnswers = new ArrayList<>(inputAnswersArray.length);
+        for (int idx = 0; idx < inputAnswersArray.length; idx++) {
+            inputAnswers.add(Integer.parseInt(inputAnswersArray[idx]));
+        }
+
+        return inputAnswers;
     }
 
     private Game createAnswerNumbers() {
