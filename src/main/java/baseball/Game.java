@@ -1,12 +1,8 @@
 package baseball;
 
-import lombok.Getter;
-
 import java.util.List;
 
 public class Game {
-
-    public static final int GAME_ANSWER_SIZE = 3;
 
     private Answers answers;
 
@@ -18,14 +14,22 @@ public class Game {
     }
 
     public static Game createNewGame() {
-        Answers answers = Answers.createAnswer(GAME_ANSWER_SIZE);
+        Answers answers = Answers.createAnswer();
         return new Game(answers, false);
     }
 
-    public List<GameResult> judge(List<Integer> answer) {
-        // TODO judge 시 게임이 끝났는지 확인하는 로직 추가
-        this.end = false;
-        return null;
+    public List<GameResult> judge(List<Integer> guesses) {
+        return this.answers.judgeResults(guesses);
+    }
+
+    public void allMatchAnswers(List<GameResult> gameResults) {
+        for (GameResult gameResult : gameResults) {
+            if(gameResult.equals(GameResult.BALL)) {
+                this.end = false;
+                return ;
+            }
+        }
+        this.end = true;
     }
 
     public Boolean isEnd() {
