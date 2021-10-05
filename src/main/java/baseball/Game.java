@@ -22,7 +22,7 @@ public class Game {
         return this.answers.judgeResults(guesses);
     }
 
-    public void allMatchAnswers(List<GameResult> gameResults) {
+    public void judgeEndGame(List<GameResult> gameResults) {
         boolean isCompleteStrike = true;
         for (GameResult gameResult : gameResults) {
             isCompleteStrike = isCompleteStrike && gameResult.equals(GameResult.STRIKE);

@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.MockedStatic;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,4 +51,24 @@ class GameTest {
         }
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"STRIKE,STRIKE,STRIKE:true",
+            "BALL,STRIKE,BALL:false",
+            "MISS,MISS,MISS:false"}, delimiter = ':')
+    void judgeEndGame(String gameResultStr, String expectEndState) {
+        // given
+        String[] gameResultSplits = gameResultStr.split(INPUT_DELIMITER);
+        List<GameResult> gameResults = new ArrayList<>();
+        for (String gameResultSplit : gameResultSplits) {
+            gameResults.add(GameResult.valueOf(gameResultSplit));
+        }
+
+        // when
+        Game game = Game.createNewGame();
+        game.judgeEndGame(gameResults);
+
+        // then
+        assertThat(Boolean.valueOf(expectEndState))
+                .isEqualTo(game.isEnd());
+    }
 }

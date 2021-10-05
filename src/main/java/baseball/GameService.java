@@ -22,7 +22,7 @@ public class GameService {
             GameHint hint = GameHint.createHintBy(gameResults);
             hint.printHint();
 
-            game.allMatchAnswers(gameResults);
+            game.judgeEndGame(gameResults);
 
         } while (!game.isEnd());
 
