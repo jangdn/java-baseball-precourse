@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class GameService {
@@ -12,11 +11,11 @@ public class GameService {
         return SingleGameService.gameService;
     }
 
-    public void play() {
+    public void play(GameServiceTool gameServiceTool) {
         Game game = Game.createNewGame();
 
         do {
-            List<Integer> guesses = askAnswers();
+            List<Integer> guesses = gameServiceTool.askAnswers();
 
             List<GameResult> gameResults = game.judge(guesses);
 
@@ -63,14 +62,4 @@ public class GameService {
         return 0;
     }
 
-    private List<Integer> askAnswers() {
-        System.out.println("숫자를 입력해주세요 : ");
-        String guessesStr = GameServiceUtil.askAnswers();
-
-        String[] inputGuesses = guessesStr.split("");
-
-        List<String> guesses = Arrays.asList(inputGuesses);
-
-        return StringUtil.toIntegers(guesses);
-    }
 }
