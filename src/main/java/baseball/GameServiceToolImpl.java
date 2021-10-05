@@ -12,7 +12,7 @@ public class GameServiceToolImpl implements GameServiceTool {
     private final static String RESTART_SIGNAL = "1";
     private final static String END_SIGNAL = "2";
 
-    private final static String NUMBER_REGEX = "[0-9]+";
+    private final static String NUMBER_REGEX = "[1-9]+";
 
     @Override
     public boolean askRestart() {
