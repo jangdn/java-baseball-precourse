@@ -22,8 +22,6 @@ public class GameService {
             printGameResult(gameResults);
 
         } while (game.isEnd());
-
-
     }
 
     private void printGameResult(List<GameResult> gameResults) {
