@@ -16,15 +16,27 @@ public class GameServiceToolImpl implements GameServiceTool {
     public boolean askRestart() {
         GameMessage.DO_TOU_RESTART_GAME.print(RESTART_SIGNAL, END_SIGNAL);
 
-        String input = Console.readLine();
+        ConsoleInput consoleInput = null;
+        do {
+            consoleInput = new ConsoleInput(Console.readLine(), false);
+            consoleInput.validate(GameServiceToolImpl::validateRestart);
+            consoleInput.inValidationMessage(GameMessage.INVALID_INPUT_STRING);
+        } while(!consoleInput.isValid());
 
+        if (consoleInput.getInput().equals(RESTART_SIGNAL))
+            return true;
+
+        return false;
+    }
+
+    private static Boolean validateRestart(String input) {
         if (input.equals(RESTART_SIGNAL))
             return true;
 
         if (input.equals(END_SIGNAL))
-            return false;
+            return true;
 
-        throw new IllegalArgumentException(GameMessage.INVALID_INPUT_STRING.getMessage());
+        return false;
     }
 
     @Override
