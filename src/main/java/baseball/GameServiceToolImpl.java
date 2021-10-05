@@ -5,8 +5,6 @@ import nextstep.utils.Console;
 import java.util.Arrays;
 import java.util.List;
 
-import static baseball.GameError.INVALID_INPUT_STRING;
-
 public class GameServiceToolImpl implements GameServiceTool {
 
     private final static String RESTART_SIGNAL = "1";
@@ -16,7 +14,7 @@ public class GameServiceToolImpl implements GameServiceTool {
 
     @Override
     public boolean askRestart() {
-        System.out.print("게임을 새로 시작하려면 "+RESTART_SIGNAL+", 종료하려면 "+ END_SIGNAL +"를 입력하세요.");
+        GameMessage.DO_TOU_RESTART_GAME.print(RESTART_SIGNAL, END_SIGNAL);
 
         String input = Console.readLine();
 
@@ -26,11 +24,12 @@ public class GameServiceToolImpl implements GameServiceTool {
         if (input.equals(END_SIGNAL))
             return false;
 
-        throw new IllegalArgumentException(INVALID_INPUT_STRING.getDescription());
+        throw new IllegalArgumentException(GameMessage.INVALID_INPUT_STRING.getMessage());
     }
 
     @Override
     public List<Integer> askAnswers() {
+        GameMessage.ENTER_GUESS_ANSWER.print();
 
         String guessStr = "";
         boolean inCorrectInput = true;
@@ -47,7 +46,7 @@ public class GameServiceToolImpl implements GameServiceTool {
 
     private static void printInCorrectInput(boolean inCorrectInput) {
         if(inCorrectInput) {
-            System.out.print(INVALID_INPUT_STRING.getDescription());
+            GameMessage.INVALID_INPUT_STRING.print();
         }
     }
 

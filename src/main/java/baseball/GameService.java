@@ -25,7 +25,7 @@ public class GameService {
 
         } while (!game.isEnd());
 
-        System.out.print("게임 끝");
+        GameMessage.GAME_END.print();
     }
 
 
@@ -33,19 +33,15 @@ public class GameService {
         int strikeCount = countResult(gameResults, GameResult.STRIKE);
         int ballCount = countResult(gameResults, GameResult.BALL);
 
-        StringBuilder builder = new StringBuilder();
-
         if(strikeCount != 0) {
-            builder.append(String.format("%d스트라이크 ", strikeCount));
+            GameMessage.GAME_RESULT_STRIKE.print(String.valueOf(strikeCount));
         }
         if(ballCount != 0){
-            builder.append(String.format("%d볼", ballCount));
+            GameMessage.GAME_RESULT_BALL.print(String.valueOf(strikeCount));
         }
-
-        if(builder.length() == 0){
-            builder.append("낫싱");
+        if(strikeCount == 0 && ballCount == 0){
+            GameMessage.GAME_RESULT_NOTHING.print();
         }
-        System.out.print(builder.toString());
     }
 
     private int countResult(List<GameResult> gameResults, GameResult countType) {
