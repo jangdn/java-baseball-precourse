@@ -12,17 +12,17 @@ public class GameService {
     }
 
     public void play(GameServiceTool gameServiceTool) {
-        Game game = Game.createNewGame();
+        Game game = Game.createGame();
 
         do {
             List<Integer> guesses = gameServiceTool.askAnswers();
 
             List<GameResult> gameResults = game.judge(guesses);
 
-            GameHint hint = GameHint.createHintBy(gameResults);
+            GameHint hint = GameHint.createBy(gameResults);
             hint.printHint();
 
-            game.judgeEndGame(gameResults);
+            game.judgeEnd(gameResults);
 
         } while (!game.isEnd());
 

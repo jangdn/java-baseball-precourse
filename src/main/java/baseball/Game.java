@@ -13,16 +13,16 @@ public class Game {
         this.end = end;
     }
 
-    public static Game createNewGame() {
+    public static Game createGame() {
         Answers answers = Answers.createAnswer();
         return new Game(answers, false);
     }
 
     public List<GameResult> judge(List<Integer> guesses) {
-        return this.answers.judgeResults(guesses);
+        return this.answers.judge(guesses);
     }
 
-    public void judgeEndGame(List<GameResult> gameResults) {
+    public void judgeEnd(List<GameResult> gameResults) {
         boolean isCompleteStrike = true;
         for (GameResult gameResult : gameResults) {
             isCompleteStrike = isCompleteStrike && gameResult.equals(GameResult.STRIKE);

@@ -26,15 +26,15 @@ public class Answers {
         return new Answers(answers);
     }
 
-    public List<GameResult> judgeResults(List<Integer> guesses) {
+    public List<GameResult> judge(List<Integer> guesses) {
         List<GameResult> resultSet = new ArrayList<>(GAME_ANSWER_SIZE);
         for (int idx = 0; idx<GAME_ANSWER_SIZE ; idx++) {
-            resultSet.add(showResult(idx, guesses.get(idx)));
+            resultSet.add(judgeEach(idx, guesses.get(idx)));
         }
         return resultSet;
     }
 
-    private GameResult showResult(Integer idx, Integer guess) {
+    private GameResult judgeEach(Integer idx, Integer guess) {
         if(values.get(idx).equals(guess))
             return GameResult.STRIKE;
         if(values.contains(guess))

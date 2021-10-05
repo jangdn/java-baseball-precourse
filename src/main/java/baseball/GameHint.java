@@ -25,7 +25,7 @@ public class GameHint {
         this.gameResults = gameResults;
     }
 
-    public static GameHint createHintBy(List<GameResult> gameResults){
+    public static GameHint createBy(List<GameResult> gameResults){
         GameHint gameHint = new GameHint(gameResults);
         gameHint.calculateCount();
         return gameHint;

@@ -32,7 +32,7 @@ class GameTest {
                     .thenReturn(1, 2, 3)
                     .thenReturn(1, 2, 3);
 
-            Game game = Game.createNewGame();
+            Game game = Game.createGame();
 
             // run
             List<String> guesses = Arrays.asList(inputGuessStr.split(INPUT_DELIMITER));
@@ -64,8 +64,8 @@ class GameTest {
         }
 
         // when
-        Game game = Game.createNewGame();
-        game.judgeEndGame(gameResults);
+        Game game = Game.createGame();
+        game.judgeEnd(gameResults);
 
         // then
         assertThat(Boolean.valueOf(expectEndState))

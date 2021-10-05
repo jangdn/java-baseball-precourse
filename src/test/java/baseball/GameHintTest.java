@@ -28,7 +28,7 @@ class GameHintTest {
         }
 
         // when
-        GameHint hintBy = GameHint.createHintBy(gameResults);
+        GameHint hintBy = GameHint.createBy(gameResults);
 
         // then
         List<Integer> expectCounts = StringUtil.toIntegers(Arrays.asList(expectCountListStr.split(INPUT_DELIMITER)));
