@@ -23,13 +23,11 @@ public class Game {
     }
 
     public void allMatchAnswers(List<GameResult> gameResults) {
+        boolean isCompleteStrike = true;
         for (GameResult gameResult : gameResults) {
-            if(gameResult.equals(GameResult.BALL)) {
-                this.end = false;
-                return ;
-            }
+            isCompleteStrike = isCompleteStrike && gameResult.equals(GameResult.STRIKE);
         }
-        this.end = true;
+        this.end = isCompleteStrike;
     }
 
     public Boolean isEnd() {

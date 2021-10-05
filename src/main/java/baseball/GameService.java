@@ -1,9 +1,5 @@
 package baseball;
 
-import com.sun.tools.javac.util.StringUtils;
-import nextstep.utils.Console;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -56,11 +52,15 @@ public class GameService {
     private int countResult(List<GameResult> gameResults, GameResult countType) {
         int count = 0;
         for (GameResult gameResult : gameResults) {
-            // TODO 2depth
-            if(gameResult.equals(countType))
-                count++;
+            count += equalGameResult(countType, gameResult);
         }
         return count;
+    }
+
+    private int equalGameResult(GameResult countType, GameResult gameResult) {
+        if(gameResult.equals(countType))
+            return 1;
+        return 0;
     }
 
     private List<Integer> askAnswers() {
