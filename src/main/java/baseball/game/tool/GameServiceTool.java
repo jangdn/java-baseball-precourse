@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface GameServiceTool {
 
-    boolean askRestart();
+	boolean askRestart();
 
-    List<Integer> askAnswers();
+	List<Integer> askAnswers();
 }

@@ -1,65 +1,68 @@
 package baseball.game.domain;
 
-import baseball.game.GameMessage;
-
 import java.util.List;
 
+import baseball.game.GameMessage;
+
 public class GameHint {
-    private List<GameResult> gameResults;
+	private List<GameResult> gameResults;
 
-    private Integer strikeCount = 0;
-    private Integer ballCount = 0;
-    private Integer missCount = 0;
+	private Integer strikeCount = 0;
+	private Integer ballCount = 0;
+	private Integer missCount = 0;
 
-    public Integer getStrikeCount() {
-        return strikeCount;
-    }
+	public Integer getStrikeCount() {
+		return strikeCount;
+	}
 
-    public Integer getBallCount() {
-        return ballCount;
-    }
+	public Integer getBallCount() {
+		return ballCount;
+	}
 
-    public Integer getMissCount() {
-        return missCount;
-    }
+	public Integer getMissCount() {
+		return missCount;
+	}
 
-    private GameHint(List<GameResult> gameResults) {
-        this.gameResults = gameResults;
-    }
+	private GameHint(List<GameResult> gameResults) {
+		this.gameResults = gameResults;
+	}
 
-    public static GameHint createBy(List<GameResult> gameResults){
-        GameHint gameHint = new GameHint(gameResults);
-        gameHint.calculateCount();
-        return gameHint;
-    }
+	public static GameHint createBy(List<GameResult> gameResults){
+		GameHint gameHint = new GameHint(gameResults);
+		gameHint.calculateCount();
+		return gameHint;
+	}
 
-    private void calculateCount() {
-        for (GameResult gameResult : this.gameResults) {
-            increaseCount(gameResult);
-        }
-    }
+	private void calculateCount() {
+		for (GameResult gameResult : this.gameResults) {
+			increaseCount(gameResult);
+		}
+	}
 
-    private void increaseCount(GameResult gameResult) {
-        if(gameResult.equals(GameResult.STRIKE)){
-            strikeCount++;
-            return ;
-        }
-        if(gameResult.equals(GameResult.BALL)){
-            ballCount++;
-            return ;
-        }
-        missCount++;
-    }
+	private void increaseCount(GameResult gameResult) {
+		if (gameResult.equals(GameResult.STRIKE)){
+			strikeCount++;
+			return ;
+		}
 
-    public void printHint() {
-        if(strikeCount != 0) {
-            GameMessage.GAME_RESULT_STRIKE.print(String.valueOf(strikeCount));
-        }
-        if(ballCount != 0) {
-            GameMessage.GAME_RESULT_BALL.print(String.valueOf(ballCount));
-        }
-        if(strikeCount == 0 && ballCount == 0) {
-            GameMessage.GAME_RESULT_NOTHING.print();
-        }
-    }
+		if (gameResult.equals(GameResult.BALL)){
+			ballCount++;
+			return ;
+		}
+		missCount++;
+	}
+
+	public void printHint() {
+		if (strikeCount != 0) {
+			GameMessage.GAME_RESULT_STRIKE.print(String.valueOf(strikeCount));
+		}
+
+		if (ballCount != 0) {
+			GameMessage.GAME_RESULT_BALL.print(String.valueOf(ballCount));
+		}
+
+		if (strikeCount == 0 && ballCount == 0) {
+			GameMessage.GAME_RESULT_NOTHING.print();
+		}
+	}
 }
