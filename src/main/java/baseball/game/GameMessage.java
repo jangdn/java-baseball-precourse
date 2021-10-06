@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public enum GameMessage {
     DO_TOU_RESTART_GAME("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요."),

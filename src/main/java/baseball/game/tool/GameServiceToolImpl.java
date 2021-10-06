@@ -1,5 +1,7 @@
-package baseball;
+package baseball.game.tool;
 
+import baseball.game.GameMessage;
+import baseball.util.StringUtil;
 import nextstep.utils.Console;
 
 import java.util.Arrays;

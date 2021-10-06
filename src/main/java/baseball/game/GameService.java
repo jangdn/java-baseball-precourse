@@ -1,4 +1,9 @@
-package baseball;
+package baseball.game;
+
+import baseball.game.domain.Game;
+import baseball.game.domain.GameHint;
+import baseball.game.domain.GameResult;
+import baseball.game.tool.GameServiceTool;
 
 import java.util.List;
 

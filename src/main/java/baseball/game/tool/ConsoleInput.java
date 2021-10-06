@@ -1,4 +1,6 @@
-package baseball;
+package baseball.game.tool;
+
+import baseball.game.GameMessage;
 
 import java.util.function.Function;
 
