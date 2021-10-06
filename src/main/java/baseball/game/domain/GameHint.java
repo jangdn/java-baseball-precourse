@@ -56,7 +56,7 @@ public class GameHint {
             GameMessage.GAME_RESULT_STRIKE.print(String.valueOf(strikeCount));
         }
         if(ballCount != 0) {
-            GameMessage.GAME_RESULT_BALL.print(String.valueOf(strikeCount));
+            GameMessage.GAME_RESULT_BALL.print(String.valueOf(ballCount));
         }
         if(strikeCount == 0 && ballCount == 0) {
             GameMessage.GAME_RESULT_NOTHING.print();

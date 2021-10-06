@@ -1,7 +1,5 @@
-package baseball;
+package baseball.game.domain;
 
-import baseball.game.domain.Game;
-import baseball.game.domain.GameResult;
 import baseball.util.StringUtil;
 import nextstep.utils.Randoms;
 import org.junit.jupiter.params.ParameterizedTest;

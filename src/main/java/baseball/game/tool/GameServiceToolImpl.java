@@ -61,6 +61,9 @@ public class GameServiceToolImpl implements GameServiceTool {
         if(StringUtil.isEmpty(inputGuess))
             return false;
 
-        return inputGuess.matches(NUMBER_REGEX);
+        if(!inputGuess.matches(NUMBER_REGEX))
+            return false;
+
+        return !StringUtil.isDuplicateIn(inputGuess);
     }
 }
